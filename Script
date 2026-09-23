@@ -1,0 +1,17 @@
+Position = TargetPos
+    })
+    flyTween:Play()
+    
+    -- Логика стандартной детонации
+    flyTween.Completed:Connect(function()
+        local finalPos = EnergyBall.Position
+        EnergyBall:Destroy()
+        
+        -- Срабатывает стандартный классический взрыв Roblox
+        local Explosion = Instance.new("Explosion")
+        Explosion.Position = finalPos
+        Explosion.BlastRadius = 12
+        Explosion.BlastPressure = 500000 
+        Explosion.Parent = workspace
+    end)
+end)
